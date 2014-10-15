@@ -1,0 +1,3 @@
+[alias]
+  dc = diff --cached
+  l = "!source ~/.githelpers && pretty_git_log"

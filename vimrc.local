@@ -1,0 +1,15 @@
+" Leader
+let mapleader = ","
+
+" ctrlp key mapping
+nnoremap <leader>f :CtrlP<cr>
+
+" Escape
+imap <c-c> <esc>
+
+" From Gary Bernhardt's dotfiles
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+" OPEN FILES IN DIRECTORY OF CURRENT FILE
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
