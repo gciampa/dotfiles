@@ -13,3 +13,5 @@ imap <c-c> <esc>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
+
+let g:rspec_runner = "os_x_iterm"
