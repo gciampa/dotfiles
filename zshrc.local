@@ -2,5 +2,8 @@
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
+# default ruby version
+chruby ruby 2.1.4
+
 # configure PATH for homebrew
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
