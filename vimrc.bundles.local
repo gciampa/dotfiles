@@ -1,0 +1,4 @@
+Plug 'tpope/vim-dispatch'
+Plug 'croaky/vim-colors-github'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'derekprior/vim-trimmer'
