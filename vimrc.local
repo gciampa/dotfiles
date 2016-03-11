@@ -1,7 +1,10 @@
-" Leader
-let mapleader = ","
+" Color scheme
+" colorscheme Tomorrow-Night
+colorscheme github
+highlight NonText guibg=#060606
+highlight Folded guibg=#0A0A0A guifg=#9090D0
 
-" ctrlp key mapping
+" CtrlP key mapping
 nnoremap <leader>f :CtrlP<cr>
 
 " Escape
@@ -14,4 +17,23 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
 
-let g:rspec_runner = "os_x_iterm"
+" vim-test strategy
+let g:test#strategy = 'dispatch'
+
+autocmd VimResized * :wincmd =
+
+" Zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" Indent the file
+map <leader>i gg=G<cr>
+
+" vim-dispatch mappings
+nmap <leader>d :Dispatch
+nmap <leader>z :Start zsh<CR>
+nmap <leader>c :Start bundle exec rails console<CR>
+
+" Search for the word under the cursor
+" Normal mode: K
+nmap K :grep "\b<C-R><C-W>\b"<CR>
