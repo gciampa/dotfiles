@@ -1,3 +1,6 @@
+[user]
+  name = Greg Ciampa
+  email = gciampa@gmail.com
 [alias]
   dc = diff --cached
   l = "!source ~/.githelpers && pretty_git_log"
