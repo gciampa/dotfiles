@@ -1,2 +1,2 @@
-alias l='ls -lG'
+alias l='ls -lGh'
 alias ls='ls -G'
