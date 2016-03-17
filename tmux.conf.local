@@ -47,3 +47,7 @@ set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 # Reload tmux.conf with prefix-r
 bind C-r source-file ~/.tmux.conf\; display "Reloaded ~/.tmux.conf"
+
+# soften status bar color to match solarized
+set -g status-bg '#839496'
+set -g status-fg '#eee8d5'
