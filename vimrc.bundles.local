@@ -1,5 +1,3 @@
-Plug 'tpope/vim-dispatch'
-Plug 'acarapetis/vim-colors-github'
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'derekprior/vim-trimmer'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
