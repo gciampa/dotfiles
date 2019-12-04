@@ -2,8 +2,12 @@
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-# default ruby version
-chruby ruby 2.2.4
-
 # configure PATH for homebrew
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/node@10/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
+
+# Use ripgrep with fzf
+export FZF_DEFAULT_COMMAND='rg --files'
+
+# Disable Spring
+export DISABLE_SPRING=1
