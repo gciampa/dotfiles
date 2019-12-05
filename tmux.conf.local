@@ -1,3 +1,6 @@
+# True color
+set -ga terminal-overrides ",xterm-256color*:Tc"
+
 # Status bar display
 set-option -g status-left-length 50
 set-option -g status-left " [#S] "
