@@ -1,2 +1,5 @@
 alias l='ls -lGh'
 alias ls='ls -G'
+
+alias vim='nvim'
+alias vi='nvim'

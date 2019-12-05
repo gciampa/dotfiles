@@ -1,6 +1,9 @@
 " Color scheme
-colorscheme base16-oceanicnext
+colorscheme OceanicNext
 set background=dark
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+let g:airline_theme='oceanicnext'
 
 " Map leader + f to open fuzzy find (FZF)
 nnoremap <leader>f :Files<cr>
