@@ -5,7 +5,7 @@ set-option -g status-right " #(date '+%a, %b %d - %I:%M') "
 
 # Splitting windows
 bind-key - split-window -v -c '#{pane_current_path}'
-bind-key \ split-window -h -c '#{pane_current_path}'
+bind-key \\ split-window -h -c '#{pane_current_path}'
 
 # Break pane into a window
 bind-key b break-pane -d
