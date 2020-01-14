@@ -7,3 +7,5 @@
   ll = "!source ~/.githelpers && pretty_git_log"
 [diff]
   compactionHeuristic = true
+[core]
+  editor = nvim
