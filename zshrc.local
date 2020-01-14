@@ -4,7 +4,7 @@ source /usr/local/share/chruby/auto.sh
 
 # configure PATH for homebrew
 export PATH="/usr/local/opt/node@10/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 
 # Use ripgrep with fzf
 export FZF_DEFAULT_COMMAND='rg --files'
