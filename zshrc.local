@@ -12,9 +12,15 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# Use ripgrep with fzf
-export FZF_DEFAULT_COMMAND='rg --files'
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_OPTS="--height 40% --layout reverse"
+[ -f "$HOME/dotfiles-local/zsh/configs/base16-oceanicnext.config" ] &&
+  source "$HOME/dotfiles-local/zsh/configs/base16-oceanicnext.config"
 
-# NeoVim
+# neovim
 export VISUAL=nvim
 export EDITOR=$VISUAL
+
+# bat
+export BAT_THEME=base16

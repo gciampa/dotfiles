@@ -10,6 +10,9 @@ let g:lightline = {
   \ }
   \ }
 
+" Use ripgrep with FZF
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow'
+
 " Map leader + f to open fuzzy find (FZF)
 nnoremap <leader>f :Files<cr>
 
