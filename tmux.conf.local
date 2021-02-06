@@ -5,6 +5,10 @@ set -ga terminal-overrides ",xterm-256color*:Tc"
 set-option -g status-left-length 50
 set-option -g status-left " [#S] "
 set-option -g status-right " #(date '+%a, %b %d - %I:%M') "
+# set-option -g status-bg "#6699cc" # -> blue
+set-option -g status-bg "#343d46"   # -> black
+# set-option -g status-bg "#65737e" # -> grey
+set-option -g status-fg "#ffffff"
 
 # Splitting windows
 bind-key - split-window -v -c '#{pane_current_path}'
