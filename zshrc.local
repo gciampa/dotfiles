@@ -1,7 +1,9 @@
+# chruby
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+
 # configure PATH for homebrew
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$PATH:/opt/homebrew/bin"
 
 # Add ./bin to PATH for easier rails
 export PATH="./bin:$PATH"
