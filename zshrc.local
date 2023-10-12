@@ -1,12 +1,10 @@
-# chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
 # configure PATH for homebrew
-# export PATH="/usr/local/opt/node@10/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/node@12/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# Add ./bin to PATH for easier rails
+export PATH="./bin:$PATH"
 
 # golang
 export GOPATH=$HOME/go
@@ -24,3 +22,6 @@ export EDITOR=$VISUAL
 
 # bat
 export BAT_THEME=base16
+
+# GPG
+export GPG_TTY=$(tty)

@@ -1,5 +1,5 @@
 " Color scheme
-colorscheme OceanicNext
+colorscheme oceanicnext
 set background=dark
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
@@ -30,9 +30,16 @@ nnoremap <leader>= :wincmd =<cr>
 map <leader>i gg=G``zz<cr>
 
 " Configure ale
-let g:ale_linters = { 'ruby': ['standardrb', 'brakeman'], 'go': ['golangci-lint'] }
-let g:ale_go_golangci_lint_options = '--fast'
+" let g:ale_linters = {'ruby': ['standardrb', 'brakeman'], 'go': ['golangci-lint']}
+" let g:ale_fixers = {'ruby': ['standardrb']}
+" let g:ale_fix_on_save = 1
+" let g:ale_go_golangci_lint_options = '--fast'
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
 
 " Color column
 set textwidth=120
 set colorcolumn=+1
+
+" Clear highlighting
+" nnoremap <silent> <C-L> :nohlsearch<cr>
