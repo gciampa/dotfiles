@@ -1,3 +1,5 @@
+tap "thoughtbot/formulae"
+
 brew "awscli"
 brew "bat"
 brew "chruby"
