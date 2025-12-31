@@ -104,6 +104,7 @@ fi
 # zsh-autosuggestions
 if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  bindkey '^ ' autosuggest-accept
 fi
 
 # Starship prompt
