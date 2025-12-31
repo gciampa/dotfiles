@@ -1,0 +1,12 @@
+{
+  "awsAuthRefresh": "aws sso login --profile YOUR_PROFILE",
+  "env": {
+    "AWS_PROFILE": "YOUR_PROFILE"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "alwaysThinkingEnabled": true,
+  "model": "claude-sonnet-4-20250514"
+}

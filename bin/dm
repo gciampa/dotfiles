@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# dm - Toggle or set macOS dark mode
+
+case "${1:-toggle}" in
+  on|dark)
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to true'
+    echo "Dark mode enabled"
+    ;;
+  off|light)
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
+    echo "Light mode enabled"
+    ;;
+  toggle)
+    osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
+    ;;
+  status)
+    if osascript -e 'tell app "System Events" to tell appearance preferences to get dark mode'; then
+      echo "Dark mode is ON"
+    else
+      echo "Dark mode is OFF"
+    fi
+    ;;
+  *)
+    echo "Usage: dm [on|off|dark|light|toggle|status]"
+    exit 1
+    ;;
+esac

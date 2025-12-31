@@ -1,0 +1,13 @@
+# Theme
+theme = Catppuccin Mocha
+
+# Font
+font-style = Regular
+font-size = 14
+
+# Cursor styling
+cursor-style = block
+cursor-style-blink = false
+
+# Shell
+shell-integration-features = no-cursor,ssh-env
