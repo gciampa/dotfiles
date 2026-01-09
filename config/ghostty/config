@@ -1,6 +1,10 @@
 # Theme
 theme = Catppuccin Mocha
 
+# Window
+window-width = 170
+window-height = 50
+
 # Font
 font-style = Regular
 font-size = 14
