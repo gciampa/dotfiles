@@ -28,6 +28,7 @@ ghostty:
 	ln -sf $(PWD)/config/ghostty/config ~/.config/ghostty/config
 
 claude:
+	curl -fsSL https://claude.ai/install.sh | bash
 	mkdir -p ~/.claude
 	ln -sf $(PWD)/claude/CLAUDE.md ~/.claude/CLAUDE.md
 	ln -sf $(PWD)/claude/statusline.sh ~/.claude/statusline.sh
