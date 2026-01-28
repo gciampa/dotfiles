@@ -13,6 +13,10 @@ return {
         args = { '--reporter', 'json' },
         stream = 'stdout',
         ignore_exitcode = true,
+        env = {
+          -- Use project's RuboCop config for slim-lint if it exists
+          SLIM_LINT_RUBOCOP_CONF = '.slim-lint-rubocop.yml',
+        },
         parser = function(output, bufnr)
           if output == '' then
             return {}
