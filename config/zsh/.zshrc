@@ -69,7 +69,6 @@ export EDITOR=$VISUAL
 export GPG_TTY=$(tty)
 export HOMEBREW_NO_ANALYTICS=1
 export GOPATH=$HOME/go
-export CLAUDE_CODE_USE_BEDROCK=1
 export CLICOLOR=1
 
 # ==============================================================================
@@ -78,6 +77,7 @@ export CLICOLOR=1
 
 typeset -U PATH
 PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 PATH="/opt/homebrew/bin:$PATH"
 PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
