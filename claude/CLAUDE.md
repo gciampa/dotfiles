@@ -15,6 +15,11 @@
 - Commit often with small, focused commits
 - Write commit messages in the imperative mood, e.g. "Add feature" not "Added feature"
 
+# Git Worktrees
+- Use `ga <branch-name>` to create a new worktree (creates branch and cd's into it)
+- Use `gd` to remove the current worktree and its branch
+- Ask before creating a worktree vs a regular branch
+
 # Before taking action
 - Ask before large refactors that touch many files
 - Ask before deleting significant code
