@@ -7,9 +7,9 @@ ga() {
 
   local branch="$1"
   local base="$(basename "$PWD")"
-  local path="../${base}--${branch}"
+  local worktree="../${base}--${branch}"
 
-  git worktree add -b "$branch" "$path"
-  mise trust "$path"
-  cd "$path"
+  git worktree add -b "$branch" "$worktree" || return 1
+  mise trust "$worktree" 2>/dev/null
+  cd "$worktree"
 }
