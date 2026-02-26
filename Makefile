@@ -10,12 +10,12 @@ zsh:
 	ln -sf $(PWD)/zshenv ~/.zshenv
 	ln -sf $(PWD)/config/zsh/.zshrc ~/.config/zsh/.zshrc
 	ln -sf $(PWD)/config/zsh/.zprofile ~/.config/zsh/.zprofile
-	ln -sf $(PWD)/config/zsh/functions ~/.config/zsh/functions
-	ln -sf $(PWD)/config/zsh/themes ~/.config/zsh/themes
+	ln -sfn $(PWD)/config/zsh/functions ~/.config/zsh/functions
+	ln -sfn $(PWD)/config/zsh/themes ~/.config/zsh/themes
 	ln -sf $(PWD)/config/starship.toml ~/.config/starship.toml
 
 nvim:
-	ln -sf $(PWD)/config/nvim ~/.config/nvim
+	ln -sfn $(PWD)/config/nvim ~/.config/nvim
 
 git:
 	ln -sf $(PWD)/git/gitconfig ~/.gitconfig
