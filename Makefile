@@ -1,6 +1,6 @@
-.PHONY: install brew zsh nvim git ghostty claude bin clean
+.PHONY: install brew zsh nvim git ghostty claude bin home clean
 
-install: brew zsh nvim git ghostty claude bin
+install: brew zsh nvim git ghostty claude bin home
 
 brew:
 	brew bundle --file=Brewfile
@@ -41,6 +41,9 @@ bin:
 	mkdir -p ~/.bin
 	ln -sf $(PWD)/bin/dm ~/.bin/dm
 
+home:
+	for f in $(PWD)/home/.*; do ln -sf $$f ~/.$$(basename $$f); done
+
 clean:
 	rm -f ~/.zshenv
 	rm -rf ~/.config/zsh
@@ -50,3 +53,4 @@ clean:
 	rm -f ~/.config/ghostty/config
 	rm -f ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline.sh
 	rm -f ~/.bin/dm
+	for f in $(PWD)/home/.*; do rm -f ~/.$$(basename $$f); done
