@@ -41,6 +41,16 @@ return {
         end,
       }
 
+      lint.linters.markdownlint = vim.tbl_extend('force', lint.linters.markdownlint, {
+        stdin = false,
+        args = { '--config', vim.fn.expand '~/.markdownlint.json' },
+        stream = 'stderr',
+        parser = require('lint.parser').from_errorformat('%f:%l:%c %m,%f:%l %m', {
+          source = 'markdownlint',
+          severity = vim.diagnostic.severity.WARN,
+        }),
+      })
+
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         slim = { 'slim_lint' },
