@@ -42,7 +42,7 @@ bin:
 	ln -sf $(PWD)/bin/dm ~/.bin/dm
 
 home:
-	for f in $(PWD)/home/.*; do ln -sf $$f ~/.$$(basename $$f); done
+	for f in $(PWD)/home/.*; do [ "$$(basename $$f)" = "." ] || [ "$$(basename $$f)" = ".." ] || ln -sf $$f ~/.$$(basename $$f); done
 
 clean:
 	rm -f ~/.zshenv
@@ -53,4 +53,4 @@ clean:
 	rm -f ~/.config/ghostty/config
 	rm -f ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline.sh
 	rm -f ~/.bin/dm
-	for f in $(PWD)/home/.*; do rm -f ~/.$$(basename $$f); done
+	for f in $(PWD)/home/.*; do [ "$$(basename $$f)" = "." ] || [ "$$(basename $$f)" = ".." ] || rm -f ~/.$$(basename $$f); done
