@@ -1,0 +1,49 @@
+claude-aws() {
+  local cache_file="/tmp/bedrock_models_cache"
+  local cache_ttl=86400
+  local selected_model_id
+  local selected_profile
+  local current_time=$(date +%s)
+
+  # 1. Manual Cache Refresh Flag
+  if [[ "$1" == "--refresh" ]]; then
+    rm -f "$cache_file"
+    shift
+  fi
+
+  # 2. Handle Bedrock Model Caching
+  if [[ ! -f "$cache_file" ]] || [[ $((current_time - $(date -r "$cache_file" +%s))) -gt $cache_ttl ]]; then
+    echo "Refreshing Bedrock model cache..." >&2
+    # Note: We use a default profile just to fetch the list initially
+    aws-vault exec oam-next-dev-admin -- aws bedrock list-foundation-models \
+      --by-provider Anthropic \
+      --query 'sort_by(modelSummaries[?modelLifecycle.status==`ACTIVE`], &modelName)[].[modelId, modelName]' \
+      --output text > "$cache_file" 2>/dev/null
+  fi
+
+  # 3. Select AWS Profile via fzf
+  selected_profile=$(aws-vault list --profiles | fzf --height 20% --border --header "Select AWS Profile")
+  if [[ -z "$selected_profile" ]]; then
+    echo "No profile selected. Exiting."
+    return 1
+  fi
+
+  # 4. Select Bedrock Model via fzf
+  selected_model_id=$(cat "$cache_file" | fzf --height 40% --border --header "Select Model (Profile: $selected_profile)" \
+                                            --delimiter '\t' --with-nth 2.. \
+                                            | awk '{print $1}')
+
+  if [[ -z "$selected_model_id" ]]; then
+    echo "No model selected. Exiting."
+    return 1
+  fi
+
+  # 5. Execute
+  echo "Launching Claude ($selected_model_id) using profile: $selected_profile"
+
+  ANTHROPIC_MODEL="$selected_model_id" \
+  CLAUDE_CODE_USE_BEDROCK=1 \
+  AWS_REGION="${AWS_REGION:-us-east-1}" \
+  aws-vault exec "$selected_profile" -- claude "$@"
+}
+
