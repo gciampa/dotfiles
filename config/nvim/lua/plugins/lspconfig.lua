@@ -161,17 +161,6 @@ return {
         },
       },
 
-      ruby_lsp = {
-        init_options = {
-          formatter = 'standard',
-          linters = { 'standard' },
-          addonSettings = {
-            ['Ruby LSP Rails'] = {
-              enablePendingMigrationsPrompt = false,
-            },
-          },
-        },
-      },
     }
 
     -- Ensure the servers and tools above are installed

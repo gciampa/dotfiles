@@ -89,5 +89,8 @@ require('lazy').setup({
   },
 })
 
+-- LSP servers managed outside of Mason (uses mise for version management)
+vim.lsp.enable('ruby-lsp')
+
 -- Set colorscheme
 vim.cmd.colorscheme 'catppuccin-mocha'
