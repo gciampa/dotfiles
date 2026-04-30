@@ -1,0 +1,5 @@
+claude-aws() {
+  ANTHROPIC_MODEL="us.anthropic.claude-opus-4-6-v1[1m]" \
+  CLAUDE_CODE_USE_BEDROCK=1 \
+  aws-vault exec oam-next-dev-admin -- claude "$@"
+}
