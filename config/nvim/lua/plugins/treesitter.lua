@@ -1,20 +1,21 @@
 -- Highlight, edit, and navigate code
 return {
   'nvim-treesitter/nvim-treesitter',
-  branch = 'master', -- Use stable branch (main is a breaking rewrite)
+  branch = 'main',
+  lazy = false,
   build = ':TSUpdate',
-  main = 'nvim-treesitter.configs',
   dependencies = {
     'RRethy/nvim-treesitter-endwise',
   },
-  opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'ruby', 'embedded_template', 'javascript', 'typescript', 'json' },
-    auto_install = true,
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = { 'ruby' },
-    },
-    indent = { enable = true, disable = { 'ruby' } },
-    endwise = { enable = true },
-  },
+  config = function()
+    local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'ruby', 'embedded_template', 'javascript', 'typescript', 'json' }
+
+    require('nvim-treesitter').install(parsers)
+
+    vim.api.nvim_create_autocmd('FileType', {
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
+    })
+  end,
 }
