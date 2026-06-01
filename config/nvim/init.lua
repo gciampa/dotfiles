@@ -28,6 +28,11 @@ vim.o.cursorline = true
 vim.o.scrolloff = 4
 vim.o.confirm = true
 
+-- Enable legacy syntax highlighting as a fallback for filetypes without a
+-- treesitter parser (e.g. slim). treesitter.start() disables regex syntax
+-- per-buffer where a parser exists, so this won't double-highlight.
+vim.cmd 'syntax enable'
+
 -- Sync clipboard with OS
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
