@@ -1,6 +1,6 @@
-.PHONY: install brew zsh nvim git ghostty claude bin home clean
+.PHONY: install brew zsh nvim git ghostty claude opencode bin home clean
 
-install: brew zsh nvim git ghostty claude bin home
+install: brew zsh nvim git ghostty claude opencode bin home
 
 brew:
 	brew bundle --file=Brewfile
@@ -37,6 +37,10 @@ claude:
 		echo "Created ~/.claude/settings.json - edit with your values"; \
 	fi
 
+opencode:
+	mkdir -p ~/.config/opencode
+	ln -sf $(PWD)/config/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
+
 bin:
 	mkdir -p ~/.bin
 	ln -sf $(PWD)/bin/dm ~/.bin/dm
@@ -52,5 +56,6 @@ clean:
 	rm -f ~/.gitconfig ~/.gitignore ~/.gitmessage ~/.githelpers
 	rm -f ~/.config/ghostty/config
 	rm -f ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline.sh
+	rm -f ~/.config/opencode/opencode.jsonc
 	rm -f ~/.bin/dm
 	for f in $(PWD)/home/.*; do [ "$$(basename $$f)" = "." ] || [ "$$(basename $$f)" = ".." ] || rm -f ~/.$$(basename $$f); done
