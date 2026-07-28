@@ -159,3 +159,6 @@ export LESS_TERMCAP_so=$'\e[01;35m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;36m'
 export LESS_TERMCAP_ue=$'\e[0m'
+
+# opencode
+export PATH=/Users/gregciampa/.opencode/bin:$PATH
