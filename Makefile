@@ -38,6 +38,7 @@ claude:
 	fi
 
 opencode:
+	curl -fsSL https://opencode.ai/install | bash
 	mkdir -p ~/.config/opencode
 	ln -sf $(PWD)/config/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 

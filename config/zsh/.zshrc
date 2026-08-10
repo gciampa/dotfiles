@@ -78,6 +78,7 @@ export CLICOLOR=1
 typeset -U PATH
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.opencode/bin:$PATH"
 PATH="/opt/homebrew/bin:$PATH"
 PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
@@ -159,6 +160,3 @@ export LESS_TERMCAP_so=$'\e[01;35m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;36m'
 export LESS_TERMCAP_ue=$'\e[0m'
-
-# opencode
-export PATH=/Users/gregciampa/.opencode/bin:$PATH
