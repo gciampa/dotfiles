@@ -4,13 +4,7 @@
     "oam": {
       "type": "remote",
       "url": "https://audit.kirkpatrickprice.com/mcp",
-      "enabled": true,
-      // SSO's Doorkeeper client registers the /callback path only, and opencode
-      // defaults to /mcp/oauth/callback. Pin the path until SSO accepts any
-      // loopback path. 127.0.0.1 (not localhost) so Doorkeeper ignores the port.
-      "oauth": {
-        "redirectUri": "http://127.0.0.1:19876/callback"
-      }
+      "enabled": true
     }
   }
 }
