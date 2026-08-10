@@ -1,9 +1,5 @@
-# Starting config for a new machine. Copied to ~/.codex/config.toml by
-# `make codex` only when that file does not already exist.
-#
-# Not symlinked: codex writes to its own config (project trust entries, UI
-# state), and this repo is public. Keeping the live file untracked keeps
-# project paths out of it.
+# Starting config, copied to ~/.codex/config.toml only if that file is absent.
+# Not symlinked: codex writes project paths into its own config.
 
 model = "openai.gpt-5.6-sol"
 model_provider = "amazon-bedrock"
@@ -11,9 +7,7 @@ approvals_reviewer = "guardian_subagent"
 model_reasoning_effort = "low"
 
 [model_providers.amazon-bedrock.aws]
-# Fill in the AWS profile for this machine; codex has no env substitution.
-# The same value lives in BEDROCK_AWS_PROFILE in ~/.config/zsh/local.zsh.
-# profile = ""
+# profile = ""  # per-machine; see BEDROCK_AWS_PROFILE in ~/.config/zsh/local.zsh
 region = "us-east-2"
 wire_api = "responses"
 
