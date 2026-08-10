@@ -1,6 +1,6 @@
-.PHONY: install brew zsh nvim git ghostty claude opencode bin home clean
+.PHONY: install brew zsh nvim git ghostty claude opencode codex bin home clean
 
-install: brew zsh nvim git ghostty claude opencode bin home
+install: brew zsh nvim git ghostty claude opencode codex bin home
 
 brew:
 	brew bundle --file=Brewfile
@@ -42,6 +42,11 @@ opencode:
 	mkdir -p ~/.config/opencode
 	ln -sf $(PWD)/config/opencode/opencode.jsonc ~/.config/opencode/opencode.jsonc
 
+codex:
+	curl -fsSL https://chatgpt.com/codex/install.sh | sh
+	mkdir -p ~/.codex
+	ln -sf $(PWD)/config/codex/config.toml ~/.codex/config.toml
+
 bin:
 	mkdir -p ~/.bin
 	ln -sf $(PWD)/bin/dm ~/.bin/dm
@@ -58,5 +63,6 @@ clean:
 	rm -f ~/.config/ghostty/config
 	rm -f ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline.sh
 	rm -f ~/.config/opencode/opencode.jsonc
+	rm -f ~/.codex/config.toml
 	rm -f ~/.bin/dm
 	for f in $(PWD)/home/.*; do [ "$$(basename $$f)" = "." ] || [ "$$(basename $$f)" = ".." ] || rm -f ~/.$$(basename $$f); done

@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal dotfiles for macOS. Includes ZSH, Neovim, Git, Homebrew packages, and Claude Code and opencode configuration.
+Personal dotfiles for macOS. Includes ZSH, Neovim, Git, Homebrew packages, and Claude Code, opencode, and Codex configuration.
 
 ## Installation
 

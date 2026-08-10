@@ -1,0 +1,25 @@
+model = "openai.gpt-5.6-sol"
+model_provider = "amazon-bedrock"
+approvals_reviewer = "guardian_subagent"
+model_reasoning_effort = "low"
+
+[model_providers.amazon-bedrock.aws]
+profile = "codex-sso-profile"
+region = "us-east-2"
+wire_api = "responses"
+
+[projects."/Users/gregciampa/Code/kirkpatrickprice/vendor-management-agent"]
+trust_level = "trusted"
+
+[projects."/Users/gregciampa/Code/kirkpatrickprice/online-audit-manager"]
+trust_level = "trusted"
+
+[projects."/Users/gregciampa/Code/basecamp/fizzy"]
+trust_level = "trusted"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "pull-request-number", "context-remaining", "used-tokens"]
+status_line_use_colors = true
+
+[tui.model_availability_nux]
+"openai.gpt-5.5" = 4
