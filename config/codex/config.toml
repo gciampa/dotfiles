@@ -4,7 +4,7 @@ approvals_reviewer = "guardian_subagent"
 model_reasoning_effort = "low"
 
 [model_providers.amazon-bedrock.aws]
-profile = "codex-sso-profile"
+profile = "oam-next-dev-admin"
 region = "us-east-2"
 wire_api = "responses"
 
