@@ -45,7 +45,10 @@ opencode:
 codex:
 	curl -fsSL https://chatgpt.com/codex/install.sh | sh
 	mkdir -p ~/.codex
-	ln -sf $(PWD)/config/codex/config.toml ~/.codex/config.toml
+	@if [ ! -f ~/.codex/config.toml ]; then \
+		cp $(PWD)/config/codex/config.toml ~/.codex/config.toml; \
+		echo "Created ~/.codex/config.toml"; \
+	fi
 
 bin:
 	mkdir -p ~/.bin
