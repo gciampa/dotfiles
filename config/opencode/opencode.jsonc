@@ -3,7 +3,8 @@
   "mcp": {
     "oam": {
       "type": "remote",
-      "url": "https://audit.kirkpatrickprice.com/mcp",
+      // Set OAM_MCP_URL in ~/.config/zsh/local.zsh (untracked).
+      "url": "{env:OAM_MCP_URL}",
       "enabled": true
     }
   }

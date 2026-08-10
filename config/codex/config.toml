@@ -11,7 +11,9 @@ approvals_reviewer = "guardian_subagent"
 model_reasoning_effort = "low"
 
 [model_providers.amazon-bedrock.aws]
-profile = "oam-next-dev-admin"
+# Fill in the AWS profile for this machine; codex has no env substitution.
+# The same value lives in BEDROCK_AWS_PROFILE in ~/.config/zsh/local.zsh.
+# profile = ""
 region = "us-east-2"
 wire_api = "responses"
 

@@ -1,7 +1,7 @@
 claude-aws() {
   ANTHROPIC_MODEL="us.anthropic.claude-opus-4-6-v1[1m]" \
   CLAUDE_CODE_USE_BEDROCK=1 \
-  AWS_PROFILE=oam-next-dev-admin \
-  AWS_REGION=us-east-2 \
+  AWS_PROFILE="$BEDROCK_AWS_PROFILE" \
+  AWS_REGION="$BEDROCK_AWS_REGION" \
   claude "$@"
 }
