@@ -168,3 +168,14 @@ export LESS_TERMCAP_ue=$'\e[0m'
 # Machine-specific values that should stay out of this public repo, e.g.
 # internal hostnames and AWS profile names. Untracked; sourced last so it wins.
 [[ -f ~/.config/zsh/local.zsh ]] && source ~/.config/zsh/local.zsh
+
+# Use the configured Bedrock SSO profile for the native AWS credential chain.
+if [[ -n "$BEDROCK_AWS_PROFILE" ]]; then
+  export AWS_PROFILE="$BEDROCK_AWS_PROFILE"
+fi
+if [[ -n "$BEDROCK_AWS_REGION" ]]; then
+  export AWS_REGION="$BEDROCK_AWS_REGION"
+fi
+
+# opencode
+export PATH=/Users/gregciampa/.opencode/bin:$PATH

@@ -7,8 +7,7 @@ approvals_reviewer = "guardian_subagent"
 model_reasoning_effort = "low"
 
 [model_providers.amazon-bedrock.aws]
-# profile = ""  # per-machine; see BEDROCK_AWS_PROFILE in ~/.config/zsh/local.zsh
-region = "us-east-2"
+# AWS_PROFILE and AWS_REGION are set from ~/.config/zsh/local.zsh.
 wire_api = "responses"
 
 [tui]
