@@ -13,41 +13,36 @@ OVERLAY='\033[38;2;127;132;156m'
 PEACH='\033[38;2;250;179;135m'
 NC='\033[0m'
 
+SEP="${OVERLAY}·${NC}"
+
 # Get current directory and change to it
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 cd "$current_dir" 2>/dev/null || cd /
 
-# Git info
-if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  repo=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
-  branch=$(git branch --show-current 2>/dev/null || echo "detached")
-  git_info="${BLUE}${repo}${NC} ${OVERLAY}(${NC}${BLUE}${branch}${NC}${OVERLAY})${NC}"
-else
-  git_info=""
-fi
-
-# Model info
+# Model
 model=$(echo "$input" | jq -r '.model.display_name')
+
+# Directory, with $HOME shortened to ~
+dir=${current_dir/#$HOME/\~}
+
+# Branch
+branch=$(git branch --show-current 2>/dev/null)
+if [ -z "$branch" ] && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  branch="detached"
+fi
 
 # Context usage
 ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
 current_usage=$(echo "$input" | jq '.context_window.current_usage')
 
 if [ "$current_usage" != "null" ]; then
-  current_tokens=$(echo "$current_usage" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
-  pct=$((current_tokens * 100 / ctx_size))
+  used_tokens=$(echo "$current_usage" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
 else
-  pct=0
+  used_tokens=0
 fi
 
-# Progress bar
-filled=$((pct * 20 / 100))
-empty=$((20 - filled))
-filled_bar=""
-empty_bar=""
-for ((i=0; i<filled; i++)); do filled_bar+="█"; done
-for ((i=0; i<empty; i++)); do empty_bar+="░"; done
-bar="${SUBTEXT}${filled_bar}${OVERLAY}${empty_bar}${NC}"
+pct_left=$((100 - used_tokens * 100 / ctx_size))
+used_k="$((used_tokens / 1000))K"
 
 # Weather (cached for 10 minutes)
 weather_cache="/tmp/claude_weather_cache"
@@ -70,9 +65,20 @@ else
   weather=$(cat "$weather_cache")
 fi
 
-# Output
-if [ -n "$git_info" ]; then
-  printf "%b\n" "${git_info} ${OVERLAY}|${NC} ${MAUVE}${model}${NC} ${OVERLAY}|${NC} ${SUBTEXT}Context:${NC} [${bar}] ${SUBTEXT}${pct}%${NC} ${OVERLAY}|${NC} ${PEACH}${WEATHER_LOCATION}:${NC} ${SUBTEXT}${weather}${NC}"
-else
-  printf "%b\n" "${MAUVE}${model}${NC} ${OVERLAY}|${NC} ${SUBTEXT}Context:${NC} [${bar}] ${SUBTEXT}${pct}%${NC} ${OVERLAY}|${NC} ${PEACH}${WEATHER_LOCATION}:${NC} ${SUBTEXT}${weather}${NC}"
-fi
+# Output: model · directory · branch · context left · tokens used · weather
+segments=("${MAUVE}${model}${NC}" "${SUBTEXT}${dir}${NC}")
+[ -n "$branch" ] && segments+=("${BLUE}${branch}${NC}")
+segments+=("${SUBTEXT}Context ${pct_left}% left${NC}")
+segments+=("${SUBTEXT}${used_k} used${NC}")
+segments+=("${PEACH}${WEATHER_LOCATION}:${NC} ${SUBTEXT}${weather}${NC}")
+
+line=""
+for segment in "${segments[@]}"; do
+  if [ -z "$line" ]; then
+    line="$segment"
+  else
+    line="${line} ${SEP} ${segment}"
+  fi
+done
+
+printf "%b\n" "$line"
