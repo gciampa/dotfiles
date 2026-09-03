@@ -62,7 +62,11 @@ if [ $cache_age -gt $cache_max_age ]; then
   if [ -n "$weather" ]; then
     echo "$weather" > "$weather_cache"
   else
-    weather=$(cat "$weather_cache" 2>/dev/null || echo "☁Unknown +--°F")
+    # Reuse the last known value and reset the TTL, so an unreachable
+    # network backs off instead of blocking every render on a retry.
+    weather=$(cat "$weather_cache" 2>/dev/null)
+    [ -n "$weather" ] || weather="☁Unknown +--°F"
+    echo "$weather" > "$weather_cache"
   fi
 else
   weather=$(cat "$weather_cache")
