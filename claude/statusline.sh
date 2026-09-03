@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Configuration
-WEATHER_LOCATION="Tampa"
+# Configuration (override by exporting WEATHER_LOCATION)
+WEATHER_LOCATION="${WEATHER_LOCATION:-Tampa}"
 
 input=$(cat)
 
@@ -45,7 +45,10 @@ pct_left=$((100 - used_tokens * 100 / ctx_size))
 used_k="$((used_tokens / 1000))K"
 
 # Weather (cached for 10 minutes)
-weather_cache="/tmp/claude_weather_cache"
+# URL-encode spaces so multi-word locations work; slug the cache name per location
+location_query=${WEATHER_LOCATION// /+}
+location_slug=$(printf %s "$WEATHER_LOCATION" | tr -c "[:alnum:]" "_")
+weather_cache="/tmp/claude_weather_cache_${location_slug}"
 cache_max_age=600
 
 if [ -f "$weather_cache" ]; then
@@ -55,7 +58,7 @@ else
 fi
 
 if [ $cache_age -gt $cache_max_age ]; then
-  weather=$(curl -s -m 2 "wttr.in/${WEATHER_LOCATION}?format=%c%C%20%t&u" 2>/dev/null)
+  weather=$(curl -s -m 2 "wttr.in/${location_query}?format=%c%C%20%t&u" 2>/dev/null)
   if [ -n "$weather" ]; then
     echo "$weather" > "$weather_cache"
   else
