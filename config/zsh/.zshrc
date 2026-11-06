@@ -173,9 +173,6 @@ export LESS_TERMCAP_ue=$'\e[0m'
 if [[ -n "$BEDROCK_AWS_PROFILE" ]]; then
   export AWS_PROFILE="$BEDROCK_AWS_PROFILE"
 fi
-if [[ -n "$BEDROCK_AWS_REGION" ]]; then
-  export AWS_REGION="$BEDROCK_AWS_REGION"
-fi
 
 # opencode
 export PATH=/Users/gregciampa/.opencode/bin:$PATH
